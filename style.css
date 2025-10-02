@@ -1,0 +1,503 @@
+ :root {
+            --primary-color: #ff4081; /* Vibrant Pink */
+            --secondary-color: #f7b733; /* Festive Gold */
+            --dark-bg: #0d0617; /* Even deeper purple background */
+            --card-bg: rgba(255, 255, 255, 0.08); /* Slightly brighter for contrast */
+            --light-text: #f8f8f8; /* Brighter light text */
+            --heading-font: 'Kaushan Script', cursive;
+            --body-font: 'Poppins', sans-serif;
+            --gradient-1: linear-gradient(45deg, #ff4081, #f7b733);
+            --gradient-2: linear-gradient(135deg, #f7b733, #ff4081);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth; /* Smooth scroll for anchor links */
+        }
+
+        body {
+            font-family: var(--body-font);
+            background-color: var(--dark-bg);
+            color: var(--light-text);
+            background-image: 
+                radial-gradient(circle at 15% 50%, rgba(255, 64, 129, 0.15), transparent 40%),
+                radial-gradient(circle at 85% 70%, rgba(247, 183, 51, 0.15), transparent 40%),
+                url('data:image/svg+xml;utf8,<svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="smallGrid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 L 0 10" fill="none" stroke="rgba(255,255,255,0.02)" stroke-width="0.5"/></pattern></defs><rect width="100%" height="100%" fill="url(%23smallGrid)"/></svg>'); /* Subtle pattern */
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 20px;
+            background: 
+                linear-gradient(0deg, var(--dark-bg) 0%, rgba(13, 6, 23, 0.8) 100%), 
+                url('https://www.creativehatti.com/wp-content/uploads/2022/09/A-beautiful-illustration-of-Garba-night-9-small.jpg') no-repeat center center/cover;
+            position: relative;
+            overflow: hidden; /* For particle effect */
+        }
+        
+        .hero::before { /* Particle effect overlay */
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 50% 50%, rgba(255,255,255,0.05) 0%, transparent 70%);
+            pointer-events: none;
+            z-index: 1;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            animation: fadeInScale 1.8s ease-out forwards;
+        }
+
+        .hero h1 {
+            font-family: var(--heading-font);
+            font-size: 6rem; /* Larger */
+            color: var(--secondary-color);
+            text-shadow: 0 0 20px rgba(247, 183, 51, 0.9), 0 0 40px rgba(255, 64, 129, 0.5); /* More intense glow */
+            margin-bottom: 10px;
+            animation: textGlow 2s infinite alternate ease-in-out; /* Pulsating glow */
+        }
+
+        .hero h3 {
+            font-size: 1.8rem; /* Larger */
+            font-weight: 300;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+            animation: slideInLeft 1.5s ease-out forwards;
+            opacity: 0;
+        }
+
+        .hero p {
+            font-size: 1.2rem; /* Larger */
+            max-width: 700px; /* Wider */
+            margin: 0 auto 40px; /* More space */
+            animation: slideInRight 1.5s ease-out forwards;
+            opacity: 0;
+            animation-delay: 0.5s;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap; /* Allows buttons to stack on smaller screens */
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: var(--gradient-1); /* Use defined gradient */
+            color: white;
+            padding: 18px 40px; /* Larger padding */
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700; /* Bolder */
+            font-size: 1.2rem; /* Larger */
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.5s ease;
+            box-shadow: 0 8px 25px rgba(255, 64, 129, 0.6); /* More prominent shadow */
+            position: relative;
+            z-index: 1;
+            overflow: hidden;
+            animation: fadeIn 2s ease-out forwards;
+            animation-delay: 1s;
+            opacity: 0;
+        }
+        .cta-button::before { /* Hover shimmer effect */
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255,255,255,0.2);
+            transform: skewX(-30deg);
+            transition: 0.5s;
+        }
+        .cta-button:hover::before {
+            left: 100%;
+        }
+
+        .cta-button:hover {
+            transform: scale(1.07); /* More pronounced scale */
+            box-shadow: 0 12px 40px rgba(247, 183, 51, 0.7); /* Even larger shadow */
+            background: var(--gradient-2); /* Alternate gradient on hover */
+        }
+        
+        .cta-button.secondary {
+            background: transparent;
+            border: 2px solid var(--secondary-color);
+            margin-top: 0%;
+            box-shadow: 0 8px 25px rgba(247, 183, 51, 0.4);
+        }
+        
+        .cta-button.secondary:hover {
+            background: var(--secondary-color);
+            color: var(--dark-bg);
+            box-shadow: 0 12px 40px rgba(247, 183, 51, 0.7);
+        }
+
+        /* --- General Section Styling --- */
+        .section {
+            padding: 100px 0; /* More padding */
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 1s ease-out, transform 1s ease-out;
+        }
+        /* .section.is-visible will be added by JS */
+        .section.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 3.5rem; /* Larger */
+            font-family: var(--heading-font);
+            margin-bottom: 60px; /* More space */
+            color: var(--primary-color);
+            text-shadow: 0 0 10px rgba(255, 64, 129, 0.5);
+        }
+
+        /* --- Details Section --- */
+        .details-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Slightly wider cards */
+            gap: 40px; /* More space */
+            text-align: center;
+        }
+
+        .detail-card {
+            background: var(--card-bg);
+            padding: 50px 30px; /* More padding */
+            border-radius: 20px; /* Softer corners */
+            border: 1px solid rgba(255, 255, 255, 0.15); /* Slightly more visible border */
+            backdrop-filter: blur(15px); /* More blur */
+            transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .detail-card::before { /* Gradient border effect */
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: var(--gradient-1);
+            z-index: -1;
+            border-radius: 22px; /* Matches card radius + border offset */
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .detail-card:hover::before {
+            opacity: 1;
+        }
+        
+        .detail-card:hover {
+            transform: translateY(-15px); /* More pronounced lift */
+            box-shadow: 0 15px 40px rgba(0,0,0,0.5); /* Stronger shadow */
+            border-color: transparent; /* Hide original border */
+        }
+
+        .detail-card .icon {
+            font-size: 3.5rem; /* Larger icons */
+            color: var(--secondary-color);
+            margin-bottom: 25px; /* More space */
+            transition: transform 0.3s ease;
+        }
+
+        .detail-card:hover .icon {
+            transform: scale(1.1); /* Icon pulse */
+        }
+
+        .detail-card h3 {
+            font-size: 1.8rem; /* Larger */
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+
+        .detail-card p {
+            font-size: 1.15rem; /* Slightly larger */
+            font-weight: 500;
+        }
+        
+        /* --- Highlights Section --- */
+        .highlights-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 25px; /* More space */
+            list-style: none;
+        }
+
+        .highlights-list li {
+            background: var(--card-bg);
+            padding: 15px 30px; /* More padding */
+            border-radius: 35px; /* More rounded */
+            font-size: 1.15rem; /* Slightly larger */
+            border-left: 5px solid var(--secondary-color); /* Thicker border */
+            display: flex;
+            align-items: center;
+            gap: 12px; /* More space */
+            transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .highlights-list li:hover {
+            transform: translateY(-8px) scale(1.02); /* Lift and slight scale */
+            background-color: rgba(255, 64, 129, 0.25); /* More vibrant hover background */
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3); /* Subtle shadow on hover */
+            cursor: pointer; /* Indicates interactivity */
+        }
+        
+        .highlights-list i {
+            color: var(--secondary-color);
+            font-size: 1.3rem; /* Larger icons */
+            text-shadow: 0 0 8px rgba(247, 183, 51, 0.7); /* Glow for icons */
+        }
+
+.gallery-slider {
+  width: 100%;
+  overflow: hidden;
+  padding: 20px 0;
+  position: relative;
+}
+
+.gallery-slider::before,
+.gallery-slider::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  width: 60px;
+  height: 100%;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.gallery-slider::before {
+  left: 0;
+  background: linear-gradient(to right, var(--dark-bg) 0%, transparent 100%);
+}
+
+.gallery-slider::after {
+  right: 0;
+  background: linear-gradient(to left, var(--dark-bg) 0%, transparent 100%);
+}
+
+.slider-track {
+  display: flex;
+  width: max-content;
+  animation: scroll 20s linear infinite;
+}
+
+.slide {
+  flex: 0 0 auto;
+  width: 250px; /* fixed size for consistent speed */
+  padding: 0 10px;
+}
+
+.slide img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 15px;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.slide img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+}
+
+/* Keyframes that scroll full track */
+@keyframes scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); } /* half track = 1 set of images */
+}
+
+
+        /* --- End New CSS for Gallery --- */
+
+
+        /* --- Footer Section --- */
+        footer {
+            text-align: center;
+            padding: 60px 20px; /* More padding */
+            border-top: 1px solid rgba(255, 255, 255, 0.15);
+            background: linear-gradient(0deg, var(--dark-bg) 0%, rgba(13, 6, 23, 0.8) 100%);
+        }
+        
+        .registration-box {
+            max-width: 900px;
+            margin: 0 auto 40px;
+        }
+        
+        .registration-box h2 {
+            font-family: var(--heading-font);
+            color: var(--primary-color);
+            font-size: 2.8rem; /* Larger */
+            margin-bottom: 25px;
+            text-shadow: 0 0 10px rgba(255, 64, 129, 0.5);
+        }
+        
+        .registration-box p {
+            margin-bottom: 35px; /* More space before buttons */
+            font-size: 1.1rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* --- New style for footer buttons container --- */
+        .footer-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap; /* Allows buttons to stack on smaller screens */
+        }
+        
+        .contact-info {
+            margin-top: 50px;
+        }
+
+        footer p:last-child {
+            margin-top: 30px;
+            font-size: 1rem;
+            color: #ccc;
+        }
+
+        /* --- Responsive Design --- */
+        @media (max-width: 1024px) {
+            .hero h1 {
+                font-size: 5rem;
+            }
+            .slide {
+                width: 33.33vw;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 3.8rem;
+            }
+            .hero h3 {
+                font-size: 1.4rem;
+            }
+            .hero p {
+                font-size: 1rem;
+                margin-bottom: 25px;
+            }
+            .cta-button {
+                padding: 15px 30px;
+                font-size: 1rem;
+            }
+            .section-title {
+                font-size: 2.8rem;
+                margin-bottom: 40px;
+            }
+            .details-grid {
+                grid-template-columns: 1fr; /* Stack cards on smaller screens */
+                gap: 25px;
+            }
+            .detail-card {
+                padding: 35px 20px;
+            }
+            .detail-card .icon {
+                font-size: 3rem;
+            }
+            .detail-card h3 {
+                font-size: 1.5rem;
+            }
+            .highlights-list li {
+                font-size: 1rem;
+                padding: 10px 20px;
+            }
+            .registration-box h2 {
+                font-size: 2.2rem;
+            }
+            .registration-box p {
+                font-size: 0.95rem;
+            }
+            /* --- Responsive Gallery --- */
+            .gallery-slider::before, .gallery-slider::after { width: 50px; }
+            .slider-track { width: 500vw; } /* 10 images * 50vw */
+            .slide { width: 50vw; }
+            .slide img { height: 200px; }
+
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+            .hero h3 {
+                font-size: 1.1rem;
+            }
+            .section-title {
+                font-size: 2.2rem;
+            }
+            .highlights-list {
+                flex-direction: column; /* Stack highlights on very small screens */
+                align-items: center;
+            }
+            /* --- Responsive Gallery --- */
+            .slider-track { width: 900vw; } /* 10 images * 90vw */
+            .slide { width: 90vw; }
+        }
+
+        /* --- Keyframe Animations --- */
+        @keyframes fadeInScale {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        @keyframes textGlow {
+            0% { text-shadow: 0 0 10px rgba(247, 183, 51, 0.7), 0 0 20px rgba(255, 64, 129, 0.4); }
+            100% { text-shadow: 0 0 15px rgba(247, 183, 51, 1), 0 0 30px rgba(255, 64, 129, 0.6); }
+        }
+
+        @keyframes slideInLeft {
+            from { opacity: 0; transform: translateX(-50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        @keyframes slideInRight {
+            from { opacity: 0; transform: translateX(50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        /* --- New Keyframe for Gallery --- */
+        @keyframes infinite-slide {
+            from { transform: translateX(0); }
+            to { transform: translateX(calc(-25vw * 5)); } /* Moves the track by the width of the first 5 images */
+        }
